@@ -396,6 +396,7 @@ img {
 .hero__text > :nth-child(2) { animation-delay: 0.25s; }
 .hero__text > :nth-child(3) { animation-delay: 0.35s; }
 .hero__text > :nth-child(4) { animation-delay: 0.45s; }
+.hero__text > :nth-child(5) { animation-delay: 0.55s; }
 
 .hero__name {
   margin: 16px 0 22px;
@@ -418,6 +419,19 @@ img {
   margin-bottom: 32px;
   font-size: 19px;
   color: var(--text-soft);
+}
+
+.hero__badge {
+  display: inline-block;
+  margin: -12px 0 32px;
+  padding: 6px 12px;
+  border: 1px solid var(--green);
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
 }
 
 .hero__actions {
@@ -822,6 +836,67 @@ img {
   background: var(--green-line);
 }
 
+/* Bloque claro de nutrición sobre el fondo verde */
+.viandas__nutrition {
+  margin-top: 56px;
+  padding: 44px 40px;
+  border-radius: 2px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+}
+
+.viandas .viandas__nutrition .eyebrow {
+  color: var(--green);
+}
+
+.viandas__nutrition-title {
+  margin: 14px 0 12px;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.4vw, 38px);
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.viandas__nutrition-text {
+  max-width: 620px;
+  margin-bottom: 36px;
+  color: var(--text);
+}
+
+.viandas__nutrition-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.viandas__nutrition-col {
+  padding-top: 18px;
+  border-top: 2px solid var(--green);
+}
+
+.viandas__nutrition-col-title {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.viandas__nutrition-col-text {
+  font-size: 16px;
+  color: var(--text);
+}
+
+.viandas__nutrition-pro {
+  margin-top: 32px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--text);
+}
+
 /* ---------- Galería ---------- */
 
 .gallery {
@@ -1074,7 +1149,7 @@ img {
   margin-top: 8px;
   font-family: var(--font-display);
   font-size: 20px;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 a.contact__value {
@@ -1083,7 +1158,8 @@ a.contact__value {
   transition: color 0.25s var(--ease), background-size 0.35s var(--ease);
 }
 
-a.contact__value:hover {
+a.contact__value:hover,
+a.contact__value:focus-visible {
   color: var(--green);
   background-size: 100% 1px;
 }
@@ -1223,6 +1299,14 @@ a.contact__value:hover {
     padding: 32px 24px;
   }
 
+  .viandas__nutrition {
+    padding: 32px 24px;
+  }
+
+  .viandas__nutrition-cols {
+    grid-template-columns: 1fr;
+  }
+
   .career {
     --tl-gap: 0px;
   }
@@ -1267,6 +1351,34 @@ a.contact__value:hover {
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* ---------- Cortes de página (PDF) ----------
+   Sin @media print: el PDF se genera con media 'screen'.
+   En pantalla no tienen efecto. */
+
+.specialty,
+.job,
+.viandas__group,
+.viandas__nutrition,
+.gallery__item,
+.fact,
+.contact__item {
+  break-inside: avoid;
+}
+
+.section-title,
+.viandas__title {
+  break-after: avoid;
+}
+
+/* Cada bloque grande empieza en hoja nueva: así ninguna franja de color
+   queda partida entre dos páginas */
+.specialties,
+.career,
+.viandas,
+.gallery {
+  break-before: page;
 }
 
 /* ---------- Movimiento reducido ---------- */
